@@ -47,6 +47,11 @@ class SyncQueue
 public:
   inline size_t push(const T& value)
   {
+    return queue_.size();
+  }
+  
+  inline size_t push(const T& value)
+  {
 #ifndef ENABLE_WAIT_IF_QUEUE_EMPTY
      bool empty = false;
 #endif
