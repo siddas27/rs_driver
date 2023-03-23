@@ -42,7 +42,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef _USE_MATH_DEFINES
 #define _USE_MATH_DEFINES // for VC++, required to use const M_IP in <math.h>
 #endif
-
+#define ENABLE_TRANSFORM 1
 #ifdef ENABLE_TRANSFORM
 // Eigen lib
 #include <Eigen/Dense>
@@ -335,7 +335,7 @@ inline Decoder<T_PointCloud>::Decoder(const RSDecoderConstParam& const_param, co
 #ifdef ENABLE_TRANSFORM
   Eigen::AngleAxisd current_rotation_x(param_.transform_param.roll, Eigen::Vector3d::UnitX());
   Eigen::AngleAxisd current_rotation_y(param_.transform_param.pitch, Eigen::Vector3d::UnitY());
-  Eigen::AngleAxisd current_rotation_z(param_.transform_param.yaw, Eigen::Vector3d::UnitZ());
+  Eigen::AngleAxisd current_rotation_z(param_.transform_param.yaw+1.5708, Eigen::Vector3d::UnitZ());
   Eigen::Translation3d current_translation(param_.transform_param.x, param_.transform_param.y,
                                            param_.transform_param.z);
   trans_ = (current_translation * current_rotation_z * current_rotation_y * current_rotation_x).matrix();  
