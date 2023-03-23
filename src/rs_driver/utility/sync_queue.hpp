@@ -45,7 +45,7 @@ template <typename T>
 class SyncQueue
 {
 public:
-  inline size_t size(const T& value)
+  inline size_t size()
   {
     return queue_.size();
   }
